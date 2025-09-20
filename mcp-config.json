@@ -1,0 +1,59 @@
+{
+  "name": "presswire-v2-mcp",
+  "version": "1.0.0",
+  "description": "MCP configuration for PressWire v2 GitHub integration",
+  "servers": {
+    "github": {
+      "type": "github",
+      "repository": "BuddySpuds/presswire-v2",
+      "features": {
+        "issues": true,
+        "pull_requests": true,
+        "actions": true,
+        "releases": true,
+        "webhooks": true,
+        "deployments": true
+      },
+      "permissions": {
+        "contents": "write",
+        "issues": "write",
+        "pull_requests": "write",
+        "actions": "write",
+        "deployments": "write"
+      }
+    },
+    "digitalocean": {
+      "type": "digitalocean",
+      "app_name": "presswire-v2",
+      "region": "nyc3",
+      "features": {
+        "apps": true,
+        "databases": false,
+        "kubernetes": false
+      }
+    },
+    "playwright": {
+      "type": "playwright",
+      "config": "./playwright.config.js",
+      "features": {
+        "screenshots": true,
+        "videos": true,
+        "trace": true
+      }
+    }
+  },
+  "integrations": {
+    "ci_cd": {
+      "provider": "github_actions",
+      "workflow_file": ".github/workflows/ci-cd.yml",
+      "triggers": ["push", "pull_request"],
+      "deployment_target": "digitalocean"
+    },
+    "monitoring": {
+      "sentry": {
+        "enabled": true,
+        "project": "presswire-v2"
+      }
+    }
+  }
+}
