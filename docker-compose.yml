@@ -1,0 +1,58 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: presswire-web
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - /app/__pycache__
+      - /app/.pytest_cache
+    env_file:
+      - .env
+    environment:
+      # Override for local development if needed
+      - REDIS_URL=redis://redis:6379/0
+      - APP_ENV=development
+      - APP_DEBUG=true
+    depends_on:
+      - redis
+    networks:
+      - presswire-network
+    restart: unless-stopped
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+  redis:
+    image: redis:7-alpine
+    container_name: presswire-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - presswire-network
+    restart: unless-stopped
+
+  # Optional: Local PostgreSQL if not using Supabase
+  # Uncomment if you want local PostgreSQL instead of Supabase
+  # db:
+  #   image: postgres:15-alpine
+  #   container_name: presswire-db
+  #   environment:
+  #     - POSTGRES_USER=presswire
+  #     - POSTGRES_PASSWORD=presswire
+  #     - POSTGRES_DB=presswire_v2
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - presswire-network
+  #   restart: unless-stopped
+
+# volumes:
+#   postgres_data:
+
+networks:
+  presswire-network:
+    driver: bridge

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PressWire.ie - Domain-Verified Press Release Distribution for Irish Businesses</title>
+    <!-- Deployment: Environment variables configured - v1.3 PR published -->
+    <meta name="description" content="The only domain-verified PR platform in Ireland. Your press release goes live in 60 seconds. Trusted by 500+ Irish companies. CRO authenticated.">
+    <meta property="og:title" content="PressWire.ie - Verified Press Releases for Irish Businesses">
+    <meta property="og:description" content="Domain-verified press releases published in 60 seconds. The trusted PR platform for Irish companies.">
+    <meta property="og:url" content="https://presswire.ie">
+    <meta property="og:type" content="website">
+
+    <!-- PWA Support -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000000">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-pulse-slow { animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .hover-lift { transition: transform 0.2s ease; }
+        .hover-lift:hover { transform: translateY(-2px); }
+        .btn-primary { background: #000; color: white; transition: all 0.2s ease; }
+        .btn-primary:hover { background: #111; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-secondary { background: white; color: #000; border: 1px solid #e5e5e5; transition: all 0.2s ease; }
+        .btn-secondary:hover { background: #f9f9f9; border-color: #000; }
+        .badge { background: #10b981; color: white; font-size: 11px; padding: 4px 8px; border-radius: 4px; font-weight: 600; letter-spacing: 0.5px; }
+        .card { background: white; border: 1px solid #e5e5e5; border-radius: 8px; transition: all 0.2s ease; }
+        .card:hover { border-color: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .display-font { font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-black rounded flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">PW</span>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">PressWire.ie</div>
+                        <div class="text-xs text-gray-600">Domain-Verified Press Releases</div>
+                    </div>
+                    <span class="badge ml-2">VERIFIED</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/about.html" class="text-sm text-gray-600 hover:text-black transition">About</a>
+                    <a href="#how" class="text-sm text-gray-600 hover:text-black transition">How it Works</a>
+                    <a href="#features" class="text-sm text-gray-600 hover:text-black transition">Features</a>
+                    <a href="#pricing" class="text-sm text-gray-600 hover:text-black transition">Pricing</a>
+                    <a href="/news/" class="text-sm text-gray-600 hover:text-black transition">News</a>
+                    <a href="/contact.html" class="text-sm text-gray-600 hover:text-black transition">Contact</a>
+                    <a href="/generate.html" class="btn-primary px-5 py-2 rounded-md text-sm font-medium">Get Started →</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center space-x-2 mb-8 fade-in">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-xs text-gray-600"><span id="company-count">Loading...</span> verified companies • Last PR: 2 minutes ago</span>
+                </div>
+                <h1 class="display-font text-6xl md:text-7xl mb-6 fade-in">
+                    Press releases<br />
+                    <span class="text-gray-400">that actually work.</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 leading-relaxed fade-in">
+                    The only domain-verified PR platform in Ireland. Your press release goes live in 60 seconds, not 60 hours. Trusted by 500+ Irish companies.
+                </p>
+                <div class="flex flex-wrap gap-4 mb-12 fade-in">
+                    <a href="/generate.html" class="btn-primary px-6 py-3 rounded-md font-medium">Start Publishing →</a>
+                    <button onclick="document.getElementById('example-pr').scrollIntoView({behavior: 'smooth'})" class="btn-secondary px-6 py-3 rounded-md font-medium">See Example</button>
+                </div>
+                <div class="flex flex-wrap gap-6 text-sm text-gray-500 fade-in">
+                    <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Domain Verified
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        CRO Authenticated
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        60 Second Publishing
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Press Releases -->
+    <section class="py-16 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-2xl font-bold mb-8">Recent Press Releases</h2>
+            <div class="grid md:grid-cols-3 gap-6" id="homepage-prs">
+                <div class="card p-6 hover-lift">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="badge">VERIFIED</span>
+                        <span class="text-xs text-gray-500">2 hours ago</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">TechCorp Ireland Announces €5M Expansion</h3>
+                    <p class="text-sm text-gray-600 mb-4">Leading software company creates 50 new jobs in Dublin tech hub...</p>
+                    <div class="flex items-center text-xs text-gray-500">
+                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Verified via @techcorp.ie • CRO: 123456
+                    </div>
+                </div>
+                <div class="card p-6 hover-lift">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="badge">VERIFIED</span>
+                        <span class="text-xs text-gray-500">4 hours ago</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">GreenEnergy Solutions Wins EU Grant</h3>
+                    <p class="text-sm text-gray-600 mb-4">Cork-based renewable energy firm secures €2M for innovative solar project...</p>
+                    <div class="flex items-center text-xs text-gray-500">
+                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Verified via @greenenergy.ie • CRO: 789012
+                    </div>
+                </div>
+                <div class="card p-6 hover-lift">
+                    <div class="flex items-start justify-between mb-4">
+                        <span class="badge">VERIFIED</span>
+                        <span class="text-xs text-gray-500">Yesterday</span>
+                    </div>
+                    <h3 class="font-semibold mb-2">FinTech Startup Raises €10M Series A</h3>
+                    <p class="text-sm text-gray-600 mb-4">Dublin fintech revolutionizing payments for SMEs across Europe...</p>
+                    <div class="flex items-center text-xs text-gray-500">
+                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Verified via @fintech.ie • CRO: 345678
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="display-font text-4xl mb-4">How PressWire.ie Works</h2>
+                <p class="text-gray-600">From submission to SEO-optimized publication in under 60 seconds</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">1</div>
+                    <h3 class="font-semibold mb-2">Domain Verification</h3>
+                    <p class="text-sm text-gray-600">Use your company email. We verify it's legitimate and check CRO records instantly.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">2</div>
+                    <h3 class="font-semibold mb-2">Craft Your Story</h3>
+                    <p class="text-sm text-gray-600">Add headline, content, executive quotes, media links, and SEO keywords. AI helps polish it.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">3</div>
+                    <h3 class="font-semibold mb-2">Add SEO Power</h3>
+                    <p class="text-sm text-gray-600">Include backlinks, tag by industry/location, add keywords for maximum search visibility.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">4</div>
+                    <h3 class="font-semibold mb-2">Instant Publication</h3>
+                    <p class="text-sm text-gray-600">Pay & publish in 60 seconds. Get analytics, edit for 24hrs, permanent dofollow backlinks.</p>
+                </div>
+            </div>
+
+            <!-- Key Benefits Highlight -->
+            <div class="mt-16 p-8 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg">
+                <h3 class="font-bold text-xl mb-4 text-center">🚀 Why PressWire.ie Delivers Results</h3>
+                <div class="grid md:grid-cols-3 gap-4 text-sm">
+                    <div>
+                        <strong>🔗 Powerful SEO Benefits</strong>
+                        <ul class="mt-2 space-y-1 text-gray-600">
+                            <li>• Permanent dofollow backlinks</li>
+                            <li>• Custom anchor text for relevance</li>
+                            <li>• Multiple link opportunities</li>
+                            <li>• Keyword optimization built-in</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>🏷️ Smart Discovery</strong>
+                        <ul class="mt-2 space-y-1 text-gray-600">
+                            <li>• 28 industry categories</li>
+                            <li>• Geographic targeting</li>
+                            <li>• PR type classification</li>
+                            <li>• Searchable directory</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>📊 Professional Features</strong>
+                        <ul class="mt-2 space-y-1 text-gray-600">
+                            <li>• Real-time analytics</li>
+                            <li>• 24-hour edit window</li>
+                            <li>• Media attachments</li>
+                            <li>• Draft auto-save</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="display-font text-4xl mb-4">Why Irish Businesses Choose PressWire</h2>
+                <p class="text-gray-600">Built specifically for the Irish market, with features that matter</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Domain Verification</h3>
+                    <p class="text-sm text-gray-600">Only verified company emails can publish. No fake PRs, no competitors posting about you.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">CRO Integration</h3>
+                    <p class="text-sm text-gray-600">Automatic verification against the Companies Registration Office. Your CRO number displayed on every PR.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">60 Second Publishing</h3>
+                    <p class="text-sm text-gray-600">No waiting for approval. Your PR is live and indexed by Google within minutes.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">SEO Optimized</h3>
+                    <p class="text-sm text-gray-600">Schema.org markup, fast loading, mobile-friendly. Your PR ranks on Google.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Permanent URLs</h3>
+                    <p class="text-sm text-gray-600">Every PR gets a permanent URL at presswire.ie/news/your-company. Perfect for sharing.</p>
+                </div>
+                <div class="card p-6">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Media Analytics</h3>
+                    <p class="text-sm text-gray-600">Track views, clicks, and media pickups. Know which journalists are reading.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="display-font text-4xl mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-gray-600">No subscriptions. Pay per press release. Volume discounts available.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="card p-8 text-center relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-red-500 text-white text-xs px-3 py-1 rounded-full font-semibold">LAUNCH SPECIAL</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Single Press Release</h3>
+                    <div class="mb-1">
+                        <span class="text-4xl font-bold">€49</span>
+                        <span class="text-2xl text-gray-400 line-through ml-2">€99</span>
+                    </div>
+                    <div class="text-sm text-red-600 font-semibold mb-6">50% OFF - Limited Time</div>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Domain verification
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            CRO verification
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            SEO-optimized backlinks
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            24-hour edit window
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Analytics dashboard
+                        </li>
+                    </ul>
+                    <a href="/generate.html?plan=single" class="btn-secondary px-6 py-3 rounded-md font-medium block">Get Started</a>
+                </div>
+
+                <div class="card p-8 text-center border-2 border-green-500 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-green-500 text-white text-xs px-3 py-1 rounded-full font-semibold">BEST VALUE</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Professional Bundle</h3>
+                    <div class="text-4xl font-bold mb-1">€349</div>
+                    <div class="text-sm text-gray-500 mb-2">10 press releases</div>
+                    <div class="text-sm text-green-600 font-semibold mb-6">Save €641 - Only €34.90 each!</div>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Everything in Single PR
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Use within 12 months
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Priority indexing
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            48-hour edit window
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Enhanced analytics
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Priority support
+                        </li>
+                    </ul>
+                    <a href="/generate.html?plan=professional" class="btn-primary px-6 py-3 rounded-md font-medium block">Get Started</a>
+                </div>
+
+                <div class="card p-8 text-center relative opacity-75">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-gray-500 text-white text-xs px-3 py-1 rounded-full font-semibold">COMING SOON</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Enterprise</h3>
+                    <div class="text-3xl font-bold mb-1">Custom Pricing</div>
+                    <div class="text-sm text-gray-500 mb-6">For high-volume needs</div>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Unlimited press releases
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            White-label options
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            API access
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Dedicated account manager
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Team collaboration
+                        </li>
+                    </ul>
+                    <button onclick="document.getElementById('enterprise-modal').showModal()" class="btn-secondary px-6 py-3 rounded-md font-medium block w-full opacity-75 cursor-pointer">Join Waitlist</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example PR -->
+    <section id="example-pr" class="py-20 px-6 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="display-font text-4xl mb-4">See a Live Example</h2>
+                <p class="text-gray-600">This is how your press release will look when published</p>
+            </div>
+            <div class="card p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="badge">VERIFIED</span>
+                        <span class="text-sm text-gray-500">Published 2 hours ago</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Verified via @techstartup.ie
+                    </div>
+                </div>
+                <h1 class="text-3xl font-bold mb-4">TechStartup Ireland Announces €5M Series A Funding Round</h1>
+                <div class="text-sm text-gray-500 mb-6">
+                    <span>Dublin, Ireland</span> • <span>November 15, 2024</span> • <span>CRO: 654321</span>
+                </div>
+                <div class="prose max-w-none">
+                    <p class="mb-4">TechStartup Ireland, a leading provider of AI-powered business solutions, today announced the successful completion of a €5 million Series A funding round led by European venture capital firm InnovateVC.</p>
+                    <p class="mb-4">The funding will accelerate the company's expansion across Europe and support the development of its next-generation platform. The company plans to create 30 new jobs at its Dublin headquarters over the next 12 months.</p>
+                    <p class="mb-4">"This investment validates our vision to transform how Irish businesses leverage artificial intelligence," said Jane Smith, CEO of TechStartup Ireland. "We're excited to scale our operations and bring our solution to more companies across Europe."</p>
+                    <div class="mt-8 pt-8 border-t">
+                        <h3 class="font-semibold mb-2">About TechStartup Ireland</h3>
+                        <p class="text-sm text-gray-600">TechStartup Ireland is a Dublin-based technology company specializing in AI solutions for SMEs. Founded in 2021, the company serves over 200 clients across Ireland and the UK.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 bg-black text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="display-font text-4xl mb-4">Ready to Get Your Story Out?</h2>
+            <p class="text-gray-400 mb-8">Join 500+ Irish companies already using PressWire.ie</p>
+            <a href="/generate.html" class="inline-flex items-center bg-white text-black px-8 py-4 rounded-md font-medium hover:bg-gray-100 transition">
+                Start Publishing Now →
+            </a>
+            <div class="mt-8 flex justify-center space-x-8 text-sm text-gray-400">
+                <div>✓ No subscription required</div>
+                <div>✓ Live in 60 seconds</div>
+                <div>✓ Domain verified</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Waitlist Modal -->
+    <dialog id="enterprise-modal" class="p-0 rounded-lg shadow-xl backdrop:bg-black backdrop:bg-opacity-50">
+        <div class="bg-white p-8 rounded-lg max-w-md">
+            <h3 class="text-2xl font-bold mb-4">Join Enterprise Waitlist</h3>
+            <p class="text-gray-600 mb-6">Be the first to know when our Enterprise plan launches in Q1 2026.</p>
+
+            <form id="enterprise-waitlist-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Company Name</label>
+                    <input type="text" id="enterprise-company" required class="w-full p-3 border rounded-md">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Work Email</label>
+                    <input type="email" id="enterprise-email" required class="w-full p-3 border rounded-md" placeholder="you@company.ie">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Monthly PR Volume</label>
+                    <select id="enterprise-volume" required class="w-full p-3 border rounded-md">
+                        <option value="">Select volume</option>
+                        <option value="20-50">20-50 per month</option>
+                        <option value="50-100">50-100 per month</option>
+                        <option value="100+">100+ per month</option>
+                    </select>
+                </div>
+                <div class="flex gap-3 mt-6">
+                    <button type="submit" class="flex-1 bg-black text-white py-3 rounded-md font-medium hover:bg-gray-900">Join Waitlist</button>
+                    <button type="button" onclick="document.getElementById('enterprise-modal').close()" class="flex-1 bg-gray-200 text-gray-700 py-3 rounded-md font-medium hover:bg-gray-300">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-6 h-6 bg-black rounded flex items-center justify-center">
+                            <span class="text-white font-bold text-xs">PW</span>
+                        </div>
+                        <span class="font-semibold text-sm">PressWire.ie</span>
+                    </div>
+                    <p class="text-sm text-gray-600">The only domain-verified press release platform in Ireland.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm mb-3">Product</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="/generate.html" class="hover:text-black">Submit PR</a></li>
+                        <li><a href="#pricing" class="hover:text-black">Pricing</a></li>
+                        <li><a href="#features" class="hover:text-black">Features</a></li>
+                        <li><a href="/news/" class="hover:text-black">News Directory</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm mb-3">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="/about" class="hover:text-black">About</a></li>
+                        <li><a href="/contact" class="hover:text-black">Contact</a></li>
+                        <li><a href="/terms" class="hover:text-black">Terms</a></li>
+                        <li><a href="/privacy" class="hover:text-black">Privacy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm mb-3">Contact</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>Email: hello@presswire.ie</li>
+                        <li>Support: support@presswire.ie</li>
+                        <li>Press: media@presswire.ie</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t text-center text-sm text-gray-500">
+                <p>© 2024 PressWire.ie. All rights reserved. • Built for Irish businesses 🇮🇪</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PressWire.ie",
+        "url": "https://presswire.ie",
+        "logo": "https://presswire.ie/logo.png",
+        "description": "Domain-verified press release distribution for Irish businesses",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IE"
+        }
+    }
+    </script>
+
+    <!-- CRO API Integration -->
+    <script>
+    // Set company count (CRO API has CORS issues from browser)
+    // Using static count - update periodically
+    function setCompanyCount() {
+        document.getElementById('company-count').textContent = '509,000+';
+    }
+
+    // Run on page load
+    setCompanyCount();
+
+    // Enterprise waitlist form handler
+    document.getElementById('enterprise-waitlist-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+            company: document.getElementById('enterprise-company').value,
+            email: document.getElementById('enterprise-email').value,
+            volume: document.getElementById('enterprise-volume').value,
+            timestamp: new Date().toISOString()
+        };
+
+        try {
+            // For MVP, just send to contact email
+            await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'contact-form',
+                    to: 'support@presswire.ie',
+                    data: {
+                        name: formData.company,
+                        email: formData.email,
+                        company: formData.company,
+                        subject: 'Enterprise Waitlist',
+                        message: `Company: ${formData.company}\nVolume: ${formData.volume}\nRequested Enterprise plan information.`
+                    }
+                })
+            });
+
+            // Show success message
+            alert('Thank you! We\'ll contact you when Enterprise launches.');
+            document.getElementById('enterprise-modal').close();
+            e.target.reset();
+        } catch (error) {
+            alert('Failed to join waitlist. Please email us at support@presswire.ie');
+        }
+    });
+    </script>
+<!-- Load dynamic PRs -->
+<script src="/js/load-prs.js"></script>
+</body>
+</html>

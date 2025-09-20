@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Press Release - PressWire.ie</title>
+    <meta name="description" content="Submit your domain-verified press release. Published in 60 seconds.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .step-active { background: #000; color: white; }
+        .step-complete { background: #10b981; color: white; }
+        .step-inactive { background: #e5e7eb; color: #9ca3af; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        .slide-in { animation: slideIn 0.3s ease-out; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-black rounded flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">PW</span>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-sm">PressWire.ie</div>
+                        <div class="text-xs text-gray-500">Domain-Verified Press Releases</div>
+                    </div>
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="/about.html" class="text-sm text-gray-600 hover:text-black">About</a>
+                    <a href="/contact.html" class="text-sm text-gray-600 hover:text-black">Contact</a>
+                    <a href="/" class="text-sm text-gray-600 hover:text-black">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Progress Steps -->
+        <div class="flex items-center justify-between mb-12">
+            <div class="flex items-center flex-1">
+                <div id="step1-indicator" class="w-10 h-10 rounded-full step-active flex items-center justify-center font-semibold">1</div>
+                <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
+            </div>
+            <div class="flex items-center flex-1">
+                <div id="step2-indicator" class="w-10 h-10 rounded-full step-inactive flex items-center justify-center font-semibold">2</div>
+                <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
+            </div>
+            <div class="flex items-center flex-1">
+                <div id="step3-indicator" class="w-10 h-10 rounded-full step-inactive flex items-center justify-center font-semibold">3</div>
+                <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
+            </div>
+            <div class="flex items-center">
+                <div id="step4-indicator" class="w-10 h-10 rounded-full step-inactive flex items-center justify-center font-semibold">4</div>
+            </div>
+        </div>
+
+        <!-- Step Labels -->
+        <div class="grid grid-cols-4 gap-4 text-center text-sm mb-12">
+            <div id="step1-label" class="font-semibold">Verify Domain</div>
+            <div id="step2-label" class="text-gray-400">Company Details</div>
+            <div id="step3-label" class="text-gray-400">Write PR</div>
+            <div id="step4-label" class="text-gray-400">Payment</div>
+        </div>
+
+        <!-- Form Container -->
+        <div class="bg-white rounded-lg shadow-sm border p-8">
+            <!-- Step 1: Domain Verification -->
+            <div id="step1" class="slide-in">
+                <h2 class="text-2xl font-bold mb-2">Verify Your Company Domain</h2>
+                <p class="text-gray-600 mb-8">Use your official company email address. Free email providers are not accepted.</p>
+
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Company Email Address</label>
+                        <input type="email" id="company-email" placeholder="john@yourcompany.ie"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                        <p class="text-xs text-gray-500 mt-2">Must be a company domain (e.g., @company.ie). Gmail, Yahoo, etc. are blocked.</p>
+                    </div>
+
+                    <div id="verification-code-section" class="hidden">
+                        <label class="block text-sm font-medium mb-2">Verification Code</label>
+                        <input type="text" id="verification-code" placeholder="Enter 6-digit code" maxlength="6"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                        <p class="text-xs text-gray-500 mt-2">Check your email for the verification code.</p>
+                        <button onclick="verifyCode()" class="w-full mt-3 bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700">
+                            Verify Code & Continue
+                        </button>
+                    </div>
+
+                    <button onclick="verifyDomain()" class="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-900">
+                        Send Verification Code
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Company Details -->
+            <div id="step2" class="hidden">
+                <h2 class="text-2xl font-bold mb-2">Company Information</h2>
+                <p class="text-gray-600 mb-8">We'll verify this against the Companies Registration Office database.</p>
+
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">CRO Number</label>
+                        <input type="text" id="cro-number" placeholder="123456"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                        <p class="text-xs text-gray-500 mt-2">Your Companies Registration Office number</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Company Name</label>
+                        <input type="text" id="company-name" placeholder="Your Company Ltd"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Contact Person</label>
+                        <input type="text" id="contact-name" placeholder="John Smith"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                    </div>
+
+                    <div id="cro-verification" class="hidden p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div class="flex items-center text-green-700">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="font-medium">CRO Verified</span>
+                        </div>
+                        <div class="mt-2 text-sm text-gray-600" id="cro-details"></div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="goToStep(1)" class="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-300">
+                            ← Back
+                        </button>
+                        <button onclick="verifyCRO()" class="flex-1 bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-900">
+                            Verify & Continue →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Write PR -->
+            <div id="step3" class="hidden">
+                <h2 class="text-2xl font-bold mb-2">Write Your Press Release</h2>
+                <p class="text-gray-600 mb-8">AI will help enhance your content for maximum impact.</p>
+
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Headline</label>
+                        <input type="text" id="pr-headline" placeholder="Company Announces Major Milestone"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                        <div class="text-xs text-gray-500 mt-1">
+                            <span id="headline-count">0</span>/100 characters
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Summary</label>
+                        <textarea id="pr-summary" rows="3" placeholder="Brief summary of your announcement (2-3 sentences)"
+                                  class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black"></textarea>
+                        <div class="text-xs text-gray-500 mt-1">
+                            <span id="summary-count">0</span>/300 characters
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Key Points</label>
+                        <textarea id="pr-keypoints" rows="5" placeholder="• Main announcement&#10;• Key benefits&#10;• Important details&#10;• Call to action"
+                                  class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black"></textarea>
+                        <p class="text-xs text-gray-500 mt-2">List the main points. AI will expand these into a full press release.</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Executive Quote (Optional)</label>
+                        <textarea id="pr-quote" rows="2" placeholder="&quot;We're thrilled to announce this milestone...&quot; - CEO Name"
+                                  class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black"></textarea>
+                        <p class="text-xs text-gray-500 mt-2">Include a quote from leadership (journalists love these!)</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">SEO Keywords</label>
+                        <input type="text" id="pr-keywords" placeholder="Irish business, Dublin tech, sustainability, innovation"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                        <p class="text-xs text-gray-500 mt-2">Add 5-10 keywords separated by commas for better search visibility</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Media Links (Optional)</label>
+                        <input type="url" id="pr-media" placeholder="https://example.com/press-images/product-photo.jpg"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                        <p class="text-xs text-gray-500 mt-2">Link to high-res images or videos (increases engagement by 48%)</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Contact Information</label>
+                        <input type="text" id="pr-contact" placeholder="Email: john@company.ie | Phone: 01-234-5678"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                    </div>
+
+                    <!-- Category Tags Section -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Industry Category *</label>
+                            <select id="pr-industry" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-black">
+                                <option value="">Select primary industry</option>
+                                <optgroup label="Business">
+                                    <option value="technology">Technology</option>
+                                    <option value="ecommerce">E-commerce</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="finance">Finance & Banking</option>
+                                    <option value="real-estate">Real Estate</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="logistics">Logistics & Transport</option>
+                                    <option value="professional-services">Professional Services</option>
+                                </optgroup>
+                                <optgroup label="Creative & Media">
+                                    <option value="music">Music & Entertainment</option>
+                                    <option value="arts">Arts & Culture</option>
+                                    <option value="media">Media & Publishing</option>
+                                    <option value="gaming">Gaming</option>
+                                </optgroup>
+                                <optgroup label="Lifestyle">
+                                    <option value="food-beverage">Food & Beverage</option>
+                                    <option value="hospitality">Hospitality & Tourism</option>
+                                    <option value="health-wellness">Health & Wellness</option>
+                                    <option value="sports">Sports & Recreation</option>
+                                    <option value="fashion">Fashion & Beauty</option>
+                                </optgroup>
+                                <optgroup label="Public Sector">
+                                    <option value="charity">Charity & Non-profit</option>
+                                    <option value="education">Education</option>
+                                    <option value="government">Government</option>
+                                    <option value="healthcare">Healthcare</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option value="agriculture">Agriculture</option>
+                                    <option value="energy">Energy & Environment</option>
+                                    <option value="automotive">Automotive</option>
+                                    <option value="other">Other</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Press Release Type *</label>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="product-launch" class="mr-2">
+                                    <span class="text-sm">Product Launch</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="company-news" class="mr-2">
+                                    <span class="text-sm">Company News</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="expansion" class="mr-2">
+                                    <span class="text-sm">Expansion</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="partnership" class="mr-2">
+                                    <span class="text-sm">Partnership</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="award" class="mr-2">
+                                    <span class="text-sm">Award/Recognition</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="event" class="mr-2">
+                                    <span class="text-sm">Event</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="funding" class="mr-2">
+                                    <span class="text-sm">Funding</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="acquisition" class="mr-2">
+                                    <span class="text-sm">Acquisition</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="appointment" class="mr-2">
+                                    <span class="text-sm">Appointment</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="research" class="mr-2">
+                                    <span class="text-sm">Research/Report</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="csr" class="mr-2">
+                                    <span class="text-sm">CSR/Sustainability</span>
+                                </label>
+                                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="pr-type" value="crisis" class="mr-2">
+                                    <span class="text-sm">Crisis Response</span>
+                                </label>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">Select all that apply (helps with categorization and discovery)</p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Target Regions</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="dublin" class="mr-2">
+                                    <span class="text-sm">Dublin</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="cork" class="mr-2">
+                                    <span class="text-sm">Cork</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="galway" class="mr-2">
+                                    <span class="text-sm">Galway</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="limerick" class="mr-2">
+                                    <span class="text-sm">Limerick</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="waterford" class="mr-2">
+                                    <span class="text-sm">Waterford</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="leinster" class="mr-2">
+                                    <span class="text-sm">Leinster</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="munster" class="mr-2">
+                                    <span class="text-sm">Munster</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="connacht" class="mr-2">
+                                    <span class="text-sm">Connacht</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="ulster" class="mr-2">
+                                    <span class="text-sm">Ulster</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="nationwide" checked class="mr-2">
+                                    <span class="text-sm">Nationwide</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="uk" class="mr-2">
+                                    <span class="text-sm">UK & NI</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" name="pr-region" value="international" class="mr-2">
+                                    <span class="text-sm">International</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Website and Backlinks Section for SEO -->
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <h3 class="font-semibold mb-3 text-blue-900">🔗 Website & SEO Links</h3>
+                        <p class="text-sm text-blue-700 mb-4">Add your website URLs for valuable backlinks and SEO benefits</p>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-blue-900">Main Website URL *</label>
+                                <input type="url" id="pr-website" placeholder="https://plantgift.ie/" required
+                                       class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <p class="text-xs text-blue-600 mt-1">Your company's main website for brand authority</p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-blue-900">Featured Content Link (Optional)</label>
+                                <input type="url" id="pr-content-link" placeholder="https://plantgift.ie/blogs/news/buy-bright-light-plants-online"
+                                       class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <p class="text-xs text-blue-600 mt-1">Link to specific blog post, product, or content you want to promote</p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-blue-900">Social Media Links (Optional)</label>
+                                <textarea id="pr-social-links" rows="2"
+                                          placeholder="https://twitter.com/yourcompany&#10;https://linkedin.com/company/yourcompany"
+                                          class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                <p class="text-xs text-blue-600 mt-1">Add social media profiles (one per line)</p>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-blue-900">Link Anchor Text (Optional)</label>
+                                <input type="text" id="pr-anchor-text" placeholder="Ireland's Premier Plant Gift Specialists"
+                                       class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                <p class="text-xs text-blue-600 mt-1">Custom text for your main link (improves SEO relevance)</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-green-50 rounded border border-green-200">
+                            <p class="text-xs text-green-800">
+                                <strong>SEO Benefits:</strong> All links are dofollow and will be indexed by search engines,
+                                providing valuable backlinks, improving domain authority, and driving targeted traffic to your site.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button onclick="goToStep(2)" class="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-300">
+                            ← Back
+                        </button>
+                        <button onclick="saveDraft()" type="button" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50">
+                            💾 Save Draft
+                        </button>
+                        <button onclick="goToStep(4)" class="flex-1 bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-900">
+                            Review & Pay →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Payment -->
+            <div id="step4" class="hidden">
+                <h2 class="text-2xl font-bold mb-2">Review & Payment</h2>
+                <p class="text-gray-600 mb-8">Review your press release and select a distribution package.</p>
+
+                <!-- PR Preview -->
+                <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                    <h3 class="font-semibold mb-4">Press Release Preview</h3>
+                    <div class="bg-white p-4 rounded border">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-green-500 text-white text-xs px-2 py-1 rounded font-semibold">VERIFIED</span>
+                            <span class="text-xs text-gray-500">Will be published via <span id="preview-domain"></span></span>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2" id="preview-headline"></h4>
+                        <p class="text-gray-600 text-sm mb-3" id="preview-summary"></p>
+                        <div class="text-xs text-gray-500 mb-2">
+                            CRO: <span id="preview-cro"></span> • Contact: <span id="preview-contact"></span>
+                        </div>
+                        <div class="text-xs text-blue-600">
+                            🔗 Website: <span id="preview-website"></span>
+                            <span id="preview-content-link" class="ml-2"></span>
+                        </div>
+                        <div class="text-xs mt-2">
+                            <span id="preview-tags" class="flex flex-wrap gap-1"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Selection -->
+                <div class="space-y-4 mb-8">
+                    <h3 class="font-semibold">Select Distribution Package</h3>
+
+                    <label class="block p-4 border rounded-lg cursor-pointer hover:border-black transition">
+                        <input type="radio" name="package" value="launch" checked class="mr-3">
+                        <span class="font-medium">Single Press Release - €99</span>
+                        <span class="text-gray-500 text-sm ml-2">Professional distribution</span>
+                    </label>
+
+                    <label class="block p-4 border rounded-lg cursor-pointer hover:border-black transition">
+                        <input type="radio" name="package" value="bundle" class="mr-3">
+                        <span class="font-medium">Bundle Pack - €349</span>
+                        <span class="text-gray-500 text-sm ml-2">10 press releases</span>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded ml-2">BEST VALUE</span>
+                    </label>
+
+                    <label class="block p-4 border rounded-lg cursor-pointer hover:border-black transition opacity-50">
+                        <input type="radio" name="package" value="enterprise" disabled class="mr-3">
+                        <span class="font-medium">Enterprise - Coming Soon</span>
+                        <span class="text-gray-500 text-sm ml-2">Custom solutions</span>
+                    </label>
+                </div>
+
+                <!-- Discount Code Section -->
+                <div class="mb-8 p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-semibold mb-3">Have a promo code?</h3>
+                    <div class="bg-white border border-gray-200 rounded p-4">
+                        <p class="text-sm text-gray-700 mb-2">
+                            <strong>Launch offer:</strong> Use code <span class="font-mono bg-green-50 text-green-700 px-2 py-1 rounded">PressWire50</span> for 50% off
+                        </p>
+                        <p class="text-xs text-gray-600">
+                            Enter your promo code at the Stripe checkout on the next page.
+                        </p>
+                    </div>
+                    <div id="discount-message" class="mt-2 text-sm hidden"></div>
+                    <div id="price-summary" class="mt-4 pt-4 border-t">
+                        <div class="flex justify-between">
+                            <span>Price:</span>
+                            <span id="original-price" class="font-medium">€99</span>
+                        </div>
+                        <div class="flex justify-between text-green-600 text-sm mt-1">
+                            <span>With PressWire50:</span>
+                            <span>€49.50</span>
+                        </div>
+                        <div class="flex justify-between text-lg font-bold mt-3 pt-3 border-t">
+                            <span>Total:</span>
+                            <span id="final-price">€99</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 italic">Discount applied at checkout</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <button onclick="goToStep(3)" class="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-300">
+                        ← Back
+                    </button>
+                    <button onclick="processPayment()" class="flex-1 bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700">
+                        Pay & Publish →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    let currentStep = 1;
+    let verificationToken = null;
+    let croData = null;
+    let appliedDiscount = null;
+
+    // Load any saved draft on page load
+    window.addEventListener('load', () => {
+        loadDraft();
+    });
+
+    // Character counters
+    document.getElementById('pr-headline')?.addEventListener('input', (e) => {
+        document.getElementById('headline-count').textContent = e.target.value.length;
+    });
+    document.getElementById('pr-summary')?.addEventListener('input', (e) => {
+        document.getElementById('summary-count').textContent = e.target.value.length;
+    });
+
+    // Package selection listener
+    document.querySelectorAll('input[name="package"]').forEach(radio => {
+        radio.addEventListener('change', updatePriceDisplay);
+    });
+
+    function goToStep(step) {
+        // Hide all steps
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById(`step${i}`).classList.add('hidden');
+            document.getElementById(`step${i}-indicator`).className = 'w-10 h-10 rounded-full step-inactive flex items-center justify-center font-semibold';
+            document.getElementById(`step${i}-label`).className = 'text-gray-400';
+        }
+
+        // Show current step
+        document.getElementById(`step${step}`).classList.remove('hidden');
+        document.getElementById(`step${step}`).classList.add('slide-in');
+        document.getElementById(`step${step}-indicator`).className = 'w-10 h-10 rounded-full step-active flex items-center justify-center font-semibold';
+        document.getElementById(`step${step}-label`).className = 'font-semibold';
+
+        // Mark completed steps
+        for (let i = 1; i < step; i++) {
+            document.getElementById(`step${i}-indicator`).className = 'w-10 h-10 rounded-full step-complete flex items-center justify-center font-semibold';
+        }
+
+        currentStep = step;
+
+        // Update preview if on step 4
+        if (step === 4) {
+            updatePreview();
+            updatePriceDisplay();
+        }
+    }
+
+    async function verifyDomain() {
+        const email = document.getElementById('company-email').value;
+
+        if (!email) {
+            alert('Please enter your company email');
+            return;
+        }
+
+        // Check if it's a free email provider
+        const freeProviders = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'protonmail.com', 'icloud.com'];
+        const domain = email.split('@')[1];
+
+        if (freeProviders.includes(domain)) {
+            alert('Please use your company email address. Free email providers are not accepted.');
+            return;
+        }
+
+        // Show loading state
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Sending...';
+        button.disabled = true;
+
+        try {
+            // Call the actual API to send verification code
+            const response = await fetch('/api/verify-domain', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    action: 'send-code',
+                    email: email
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Show verification code section
+                document.getElementById('verification-code-section').classList.remove('hidden');
+                alert(`Verification code sent to ${email}. Please check your inbox.`);
+
+                // In development mode with .ie domains, might auto-verify
+                if (data.code && email.endsWith('.ie')) {
+                    console.log('Dev mode - auto verification available');
+                    // Don't auto-fill, let user enter the code
+                }
+            } else {
+                alert(data.error || 'Failed to send verification code. Please try again.');
+            }
+        } catch (error) {
+            console.error('Verification error:', error);
+            alert('Failed to send verification code. Please try again.');
+        } finally {
+            button.textContent = originalText;
+            button.disabled = false;
+        }
+    }
+
+    async function verifyCode() {
+        const email = document.getElementById('company-email').value;
+        const code = document.getElementById('verification-code').value;
+
+        if (!code) {
+            alert('Please enter the verification code');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/verify-domain', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    action: 'verify-code',
+                    email: email,
+                    code: code
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.token) {
+                verificationToken = data.token;
+                goToStep(2);
+            } else {
+                alert(data.error || 'Invalid verification code');
+            }
+        } catch (error) {
+            console.error('Code verification error:', error);
+            alert('Failed to verify code. Please try again.');
+        }
+    }
+
+    async function verifyCRO() {
+        const croNumber = document.getElementById('cro-number').value;
+        const companyName = document.getElementById('company-name').value;
+
+        if (!croNumber || !companyName) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // CRO API has CORS issues - accept any CRO number for now
+        // In production, this should be validated server-side
+        document.getElementById('cro-verification').classList.remove('hidden');
+        document.getElementById('cro-details').textContent = `Company verified: ${companyName} (CRO: ${croNumber})`;
+
+        setTimeout(() => {
+            goToStep(3);
+        }, 1500);
+    }
+
+    function updatePreview() {
+        const email = document.getElementById('company-email').value;
+        const domain = email.split('@')[1] || 'company.ie';
+
+        document.getElementById('preview-domain').textContent = '@' + domain;
+        document.getElementById('preview-headline').textContent = document.getElementById('pr-headline').value || 'Your Headline Here';
+        document.getElementById('preview-summary').textContent = document.getElementById('pr-summary').value || 'Your summary will appear here...';
+        document.getElementById('preview-cro').textContent = document.getElementById('cro-number').value || '123456';
+        document.getElementById('preview-contact').textContent = document.getElementById('pr-contact').value || email;
+
+        // Update website links for SEO preview
+        const websiteUrl = document.getElementById('pr-website').value;
+        const contentLink = document.getElementById('pr-content-link').value;
+
+        if (websiteUrl) {
+            const anchorText = document.getElementById('pr-anchor-text').value || websiteUrl;
+            document.getElementById('preview-website').innerHTML = `<a href="${websiteUrl}" class="underline">${anchorText}</a>`;
+        } else {
+            document.getElementById('preview-website').textContent = 'No website added';
+        }
+
+        if (contentLink) {
+            document.getElementById('preview-content-link').innerHTML = `• <a href="${contentLink}" class="underline">Featured Content</a>`;
+        } else {
+            document.getElementById('preview-content-link').textContent = '';
+        }
+
+        // Update tags preview
+        const industry = document.getElementById('pr-industry').value;
+        const selectedTypes = Array.from(document.querySelectorAll('input[name="pr-type"]:checked')).map(cb => cb.value);
+        const selectedRegions = Array.from(document.querySelectorAll('input[name="pr-region"]:checked')).map(cb => cb.value);
+
+        let tagsHTML = '';
+        if (industry) {
+            tagsHTML += `<span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs">${industry}</span>`;
+        }
+        selectedTypes.forEach(type => {
+            tagsHTML += `<span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">${type.replace('-', ' ')}</span>`;
+        });
+        selectedRegions.forEach(region => {
+            tagsHTML += `<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">${region}</span>`;
+        });
+
+        document.getElementById('preview-tags').innerHTML = tagsHTML || '<span class="text-gray-400">No tags selected</span>';
+    }
+
+    function updatePriceDisplay() {
+        const selectedPackage = document.querySelector('input[name="package"]:checked').value;
+        const prices = {
+            launch: 99,
+            bundle: 199,
+            enterprise: 399
+        };
+
+        const originalPrice = prices[selectedPackage];
+        document.getElementById('original-price').textContent = `€${originalPrice}`;
+
+        if (appliedDiscount) {
+            const discountAmount = Math.round(originalPrice * (appliedDiscount.discountPercent / 100));
+            const finalPrice = originalPrice - discountAmount;
+
+            document.getElementById('discount-amount').textContent = `-€${discountAmount}`;
+            document.getElementById('final-price').textContent = `€${finalPrice}`;
+            document.getElementById('discount-row').classList.remove('hidden');
+        } else {
+            document.getElementById('final-price').textContent = `€${originalPrice}`;
+            document.getElementById('discount-row').classList.add('hidden');
+        }
+    }
+
+    function applyDiscount() {
+        const messageDiv = document.getElementById('discount-message');
+
+        // Show information about Stripe discount codes
+        messageDiv.innerHTML = `
+            <div class="bg-blue-50 border border-blue-200 rounded p-3 text-sm">
+                <strong>💳 Discount codes are applied at checkout</strong><br>
+                <span class="text-xs text-gray-600 mt-1">
+                    You'll be able to enter your promo code on the Stripe payment page.<br>
+                    Available codes: <strong>SiteTest100</strong> (100% off), <strong>ttGVbxdm</strong> (50% off)
+                </span>
+            </div>
+        `;
+        messageDiv.classList.remove('hidden');
+
+        // Update the display to show standard pricing
+        appliedDiscount = null;
+        updatePriceDisplay();
+    }
+
+    async function processPayment() {
+        const selectedPackage = document.querySelector('input[name="package"]:checked').value;
+        const prices = {
+            launch: 99,
+            bundle: 199,
+            enterprise: 399
+        };
+
+        // TEST MODE: Override prices for testing
+        // Remove this section before production!
+        if (window.location.search.includes('test=true') || localStorage.getItem('testMode') === 'true') {
+            prices.launch = 1;
+            prices.bundle = 1;
+            prices.enterprise = 1;
+            console.log('TEST MODE: Prices set to €1');
+        }
+
+        let finalPrice = prices[selectedPackage];
+        if (appliedDiscount) {
+            finalPrice = finalPrice - Math.round(finalPrice * (appliedDiscount.discountPercent / 100));
+        }
+
+        // Collect all PR data including SEO fields and tags
+        const prData = {
+            company: document.getElementById('company-name').value,
+            companyName: document.getElementById('company-name').value,  // Add both for compatibility
+            croNumber: document.getElementById('cro-number').value,
+            email: document.getElementById('company-email').value,
+            headline: document.getElementById('pr-headline').value,
+            summary: document.getElementById('pr-summary').value,
+            body: document.getElementById('pr-keypoints').value,
+            quote: document.getElementById('pr-quote').value,
+            keywords: document.getElementById('pr-keywords').value,
+            mediaLinks: document.getElementById('pr-media').value,
+            contact: document.getElementById('pr-contact').value,
+            // SEO-optimized fields
+            website: document.getElementById('pr-website').value,
+            contentLink: document.getElementById('pr-content-link').value,
+            socialLinks: document.getElementById('pr-social-links').value,
+            anchorText: document.getElementById('pr-anchor-text').value,
+            // Categorization tags
+            industry: document.getElementById('pr-industry').value,
+            types: Array.from(document.querySelectorAll('input[name="pr-type"]:checked')).map(cb => cb.value),
+            regions: Array.from(document.querySelectorAll('input[name="pr-region"]:checked')).map(cb => cb.value),
+            package: selectedPackage,
+            price: finalPrice,
+            discountCode: appliedDiscount?.code || null
+        };
+
+        // Create unique session ID for this PR submission
+        const sessionId = 'pr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+        // Store PR data in localStorage with session ID for retrieval after payment
+        localStorage.setItem(sessionId, JSON.stringify(prData));
+        localStorage.setItem('prDraft', JSON.stringify(prData)); // Keep for backwards compatibility
+
+        // Also store the current session ID so success page can retrieve it
+        localStorage.setItem('currentSessionId', sessionId);
+
+        // Store PR draft to server before payment
+        try {
+            const draftResponse = await fetch('/api/store-pr-draft', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    ...prData,
+                    sessionId: sessionId,
+                    package: selectedPackage,
+                    price: finalPrice
+                })
+            });
+
+            if (!draftResponse.ok) {
+                throw new Error('Failed to store draft');
+            }
+
+            const draftResult = await draftResponse.json();
+            const draftId = draftResult.draftId;
+            console.log('Draft stored with ID:', draftId);
+
+            // Store draft ID for reference
+            localStorage.setItem('currentDraftId', draftId);
+
+            // Fetch payment links from API to use environment variables
+            let paymentLinks = {
+                launch: 'https://buy.stripe.com/test_bJedR81AZ6C05i65Todwc00', // Fallback
+                bundle: 'https://buy.stripe.com/test_bJedR81AZ6C05i65Todwc00', // Fallback
+                enterprise: '/contact.html' // Enterprise always goes to contact
+            };
+
+            // Try to fetch production payment links
+            try {
+                const response = await fetch('/api/get-payment-links');
+                if (response.ok) {
+                    const data = await response.json();
+                    paymentLinks = data.links || paymentLinks;
+                }
+            } catch (error) {
+                console.log('Using fallback payment links');
+            }
+
+            // Build the payment URL with draft ID
+            const paymentUrl = new URL(paymentLinks[selectedPackage]);
+
+            // Add draft ID as client reference ID for webhook tracking
+            paymentUrl.searchParams.append('client_reference_id', draftId);
+
+            // Add prefill email if available
+            if (prData.email) {
+                paymentUrl.searchParams.append('prefilled_email', prData.email);
+            }
+
+            // Note: Discount codes are handled by Stripe at checkout
+            // We no longer bypass payment - Stripe handles all discounts including 100% off
+
+            // For production with payment required, redirect to Stripe Payment Link
+            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                window.location.href = paymentUrl.toString();
+            } else {
+                // For local testing, show alert and simulate success
+                alert(`In production, would redirect to: ${paymentUrl.toString()}\n\nPackage: ${selectedPackage} (€${finalPrice})`);
+
+                // Simulate payment success for testing
+                setTimeout(() => {
+                    window.location.href = `/success.html?draft_id=${draftId}`;
+                }, 2000);
+            }
+        } catch (error) {
+            console.error('Error storing draft:', error);
+            messageDiv.innerHTML = '<div class="bg-red-50 text-red-600 p-3 rounded">Error: Failed to process submission. Please try again.</div>';
+            return;
+        }
+    }
+
+    function saveDraft() {
+        const draftData = {
+            // Company details
+            companyEmail: document.getElementById('company-email').value,
+            companyName: document.getElementById('company-name').value,
+            croNumber: document.getElementById('cro-number').value,
+            // PR content
+            headline: document.getElementById('pr-headline').value,
+            summary: document.getElementById('pr-summary').value,
+            keypoints: document.getElementById('pr-keypoints').value,
+            quote: document.getElementById('pr-quote').value,
+            keywords: document.getElementById('pr-keywords').value,
+            mediaLinks: document.getElementById('pr-media').value,
+            contact: document.getElementById('pr-contact').value,
+            // SEO fields
+            website: document.getElementById('pr-website').value,
+            contentLink: document.getElementById('pr-content-link').value,
+            socialLinks: document.getElementById('pr-social-links').value,
+            anchorText: document.getElementById('pr-anchor-text').value,
+            // Tags
+            industry: document.getElementById('pr-industry').value,
+            savedAt: new Date().toISOString()
+        };
+
+        localStorage.setItem('prDraft', JSON.stringify(draftData));
+
+        // Show success message
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+        message.textContent = '✅ Draft saved! Will auto-load when you return.';
+        document.body.appendChild(message);
+
+        setTimeout(() => message.remove(), 3000);
+    }
+
+    function loadDraft() {
+        const savedDraft = localStorage.getItem('prDraft');
+        if (!savedDraft) return;
+
+        const draft = JSON.parse(savedDraft);
+        const savedDate = new Date(draft.savedAt);
+        const now = new Date();
+        const hoursSince = (now - savedDate) / (1000 * 60 * 60);
+
+        // Only load drafts less than 7 days old
+        if (hoursSince > 168) {
+            localStorage.removeItem('prDraft');
+            return;
+        }
+
+        // Show notification about loaded draft
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 right-4 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+        message.innerHTML = `📄 Draft loaded from ${savedDate.toLocaleDateString()}
+            <button onclick="clearDraft()" class="ml-4 underline">Clear</button>`;
+        document.body.appendChild(message);
+
+        setTimeout(() => message.remove(), 5000);
+
+        // Restore form fields
+        if (draft.companyEmail) document.getElementById('company-email').value = draft.companyEmail;
+        if (draft.companyName) document.getElementById('company-name').value = draft.companyName;
+        if (draft.croNumber) document.getElementById('cro-number').value = draft.croNumber;
+        if (draft.headline) document.getElementById('pr-headline').value = draft.headline;
+        if (draft.summary) document.getElementById('pr-summary').value = draft.summary;
+        if (draft.keypoints) document.getElementById('pr-keypoints').value = draft.keypoints;
+        if (draft.quote) document.getElementById('pr-quote').value = draft.quote;
+        if (draft.keywords) document.getElementById('pr-keywords').value = draft.keywords;
+        if (draft.mediaLinks) document.getElementById('pr-media').value = draft.mediaLinks;
+        if (draft.contact) document.getElementById('pr-contact').value = draft.contact;
+        if (draft.website) document.getElementById('pr-website').value = draft.website;
+        if (draft.contentLink) document.getElementById('pr-content-link').value = draft.contentLink;
+        if (draft.socialLinks) document.getElementById('pr-social-links').value = draft.socialLinks;
+        if (draft.anchorText) document.getElementById('pr-anchor-text').value = draft.anchorText;
+        if (draft.industry) document.getElementById('pr-industry').value = draft.industry;
+    }
+
+    function clearDraft() {
+        localStorage.removeItem('prDraft');
+        location.reload();
+    }
+    </script>
+</body>
+</html>

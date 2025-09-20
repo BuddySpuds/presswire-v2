@@ -1,0 +1,62 @@
+{
+  "timestamp": 1758402028.9811258,
+  "total_tests": 9,
+  "passed": 9,
+  "failed": 0,
+  "tests": [
+    {
+      "test": "Health Check",
+      "success": true,
+      "message": "Status: 200",
+      "timestamp": 1758402028.939757
+    },
+    {
+      "test": "API Root",
+      "success": true,
+      "message": "Version: 2.0.0",
+      "timestamp": 1758402028.942958
+    },
+    {
+      "test": "Web Interface",
+      "success": true,
+      "message": "Status: 200",
+      "timestamp": 1758402028.956374
+    },
+    {
+      "test": "API Documentation",
+      "success": true,
+      "message": "Status: 200",
+      "timestamp": 1758402028.959323
+    },
+    {
+      "test": "Database Connectivity",
+      "success": true,
+      "message": "Database access working: True",
+      "timestamp": 1758402028.963021
+    },
+    {
+      "test": "Redis Connectivity",
+      "success": true,
+      "message": "Redis container running",
+      "timestamp": 1758402028.963032
+    },
+    {
+      "test": "Press Releases List",
+      "success": true,
+      "message": "Total: 0",
+      "timestamp": 1758402028.965489
+    },
+    {
+      "test": "Press Release Generation",
+      "success": true,
+      "message": "Generated PR with headline: Test Company Ltd Announces launch of new innovativ...",
+      "timestamp": 1758402028.977757
+    },
+    {
+      "test": "Press Release Enhancement",
+      "success": true,
+      "message": "Enhancement score: 82.0",
+      "timestamp": 1758402028.9811
+    }
+  ]
+}
