@@ -57,34 +57,37 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && secrets.DO_APP_ID != ''
+    if: github.ref == 'refs/heads/main'
 
     steps:
     - uses: actions/checkout@v4
 
     - name: Check for Digital Ocean credentials
+      id: check_do
       run: |
         if [ -z "${{ secrets.DO_APP_ID }}" ]; then
           echo "⏸️ Skipping deployment - DO_APP_ID not configured"
           echo "To enable deployment:"
           echo "1. Create app at https://cloud.digitalocean.com/apps"
           echo "2. Add DO_APP_ID secret in GitHub repository settings"
-          exit 0
+          echo "skip_deploy=true" >> $GITHUB_OUTPUT
+        else
+          echo "skip_deploy=false" >> $GITHUB_OUTPUT
         fi
 
     - name: Install doctl
-      if: secrets.DIGITALOCEAN_ACCESS_TOKEN != ''
+      if: steps.check_do.outputs.skip_deploy != 'true'
       uses: digitalocean/action-doctl@v2
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
     - name: Deploy to Digital Ocean App Platform
-      if: secrets.DO_APP_ID != ''
+      if: steps.check_do.outputs.skip_deploy != 'true'
       run: |
         doctl apps create-deployment ${{ secrets.DO_APP_ID }} --wait
 
     - name: Verify deployment
-      if: secrets.DO_APP_ID != ''
+      if: steps.check_do.outputs.skip_deploy != 'true'
       run: |
         doctl apps get ${{ secrets.DO_APP_ID }}
 
