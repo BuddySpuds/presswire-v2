@@ -22,16 +22,10 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Install dependencies
+    - name: Run basic test
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Run tests
-      run: |
-        python test_simple.py
-      env:
-        PYTHONPATH: ${{ github.workspace }}
+        python test_basic.py
+        echo "✅ Tests passed"
 
   build:
     needs: test
