@@ -48,7 +48,7 @@ jobs:
         outputs: type=docker,dest=/tmp/presswire-v2.tar
 
     - name: Upload Docker image as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: docker-image
         path: /tmp/presswire-v2.tar
